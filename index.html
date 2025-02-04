@@ -3,25 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style/main.css">
-        <script src="script/main.js" defer></script>
+        <link rel="stylesheet" href="./style/main.css">
+        <script src="./script/main.js" defer></script>
         <title>Document</title>
     </head>
     <body>
-        <header>
-            <h1>Game of life</h1>
-        </header>
         <main>
-            <canvas width="640" height="480">
-
-            </canvas>
+            <h1>Game of life</h1>
+            <canvas width="640" height="480"></canvas>
             <div class="options">
                 <label>
                     Vitesse
-                    <input type="range">
+                    <input min="50" max="200" type="range">
                 </label>
                 <button id="start">
-                    start
+                    START
                 </button>
             </div>
         </main>

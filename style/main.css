@@ -1,7 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Pixelify+Sans:regular,500,600,700);
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
 }
 
 canvas {
@@ -11,4 +14,110 @@ canvas {
     image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
     image-rendering: pixelated;                 /* Awesome future-browsers       */
     -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
-  }
+}
+
+body {
+    height: 90vh;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    justify-content: space-between;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 70px;
+    opacity: 70.2%;
+}
+
+.options label {
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+    gap: 8px;
+}
+
+label, button {
+    color: #4C4C4C;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options button {
+    background-color: #D9D9D9;
+    font-size: 48px;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 64px 16px 64px;
+    cursor: pointer;
+}
+
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    height: 12px;
+    background: #D9D9D9; /* Otherwise white in Chrome */
+
+}
+  
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+  
+input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+  
+input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    background: #4C4C4C;
+    cursor: pointer;
+    border: none;
+}
+  
+  /* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    background: #4C4C4C;
+    cursor: pointer;
+    border: none;
+}
+  
+  /* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    background: #4C4C4C;
+    cursor: pointer;
+    border: none;
+}

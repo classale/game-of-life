@@ -3,10 +3,15 @@ const ctx = canvas.getContext("2d");
 
 let isRunning = false;
 
-document.querySelector("#start").addEventListener("click", () => isRunning = !isRunning)
+document.querySelector("#start").addEventListener("click", e => {
+	isRunning = !isRunning
+	e.target.innerHTML = isRunning ? "stop" : "start";
+});
+
 
 canvas.width = innerWidth;
-canvas.height = innerHeight * 0.8;
+canvas.height = innerHeight * 0.7;
+
 
 ctx.imageSmoothingEnabled = false;
 
@@ -16,7 +21,14 @@ let parsedGame = [];
 const WIDTH = 67;
 const HEIGHT = 40;
 
-let timeout = 50;
+if(canvas.width > ((WIDTH / HEIGHT) * canvas.height)) canvas.width = ((WIDTH / HEIGHT) * canvas.height)
+
+let timeout = (1 / document.querySelector("input[type=range]").value) * 5000;
+
+document.querySelector("input[type=range]").addEventListener("input", e => {
+	timeout = (1 / e.target.value) * 5000;
+	console.log(timeout);
+})
 
 let run = setInterval(loop, timeout)
 
@@ -44,11 +56,6 @@ function printGame(inputgame) {
 	}
 	console.log(out);
 }
-
-const arr1 = [1, 2];
-const arr2 = [...arr1];
-
-arr2[0] = 100;
 
 for (let y = 0; y < HEIGHT; y++) {
 	game.push([]);
@@ -124,6 +131,7 @@ let BUTTON_SIZE = canvas.width < canvas.height ? canvas.width : canvas.height;
 BUTTON_SIZE /= WIDTH > HEIGHT ? HEIGHT : WIDTH;
 
 function drawGame() {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let y = 0; y < HEIGHT; y++) {
         for (let x = 0; x < WIDTH; x++) {
             drawSquare(x, y, game[y][x]);
@@ -132,8 +140,6 @@ function drawGame() {
 }
 
 drawGame()
-
-
 
 canvas.addEventListener("click", (e) => {
 	const rx = e.clientX - canvas.getBoundingClientRect().left;
