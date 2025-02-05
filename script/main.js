@@ -5,21 +5,20 @@ let isRunning = false;
 
 document.querySelector("#start").addEventListener("click", e => {
 	isRunning = !isRunning
-	e.target.innerHTML = isRunning ? "stop" : "start";
+	e.target.innerHTML = isRunning ? "STOP" : "START";
 });
 
 
 canvas.width = innerWidth;
 canvas.height = innerHeight * 0.7;
 
-
 ctx.imageSmoothingEnabled = false;
 
 let game = [];
 let parsedGame = [];
 
-const WIDTH = 67;
-const HEIGHT = 40;
+const WIDTH = 30;
+const HEIGHT = 30;
 
 if(canvas.width > ((WIDTH / HEIGHT) * canvas.height)) canvas.width = ((WIDTH / HEIGHT) * canvas.height)
 
@@ -28,17 +27,12 @@ let timeout = (1 / document.querySelector("input[type=range]").value) * 5000;
 document.querySelector("input[type=range]").addEventListener("input", e => {
 	timeout = (1 / e.target.value) * 5000;
 	console.log(timeout);
-})
+});
 
-let run = setInterval(loop, timeout)
-
-function loop() {
-    clearInterval(run)
-
+(function loop() {
     if(isRunning) iterate();
-
-    run = setInterval(loop, timeout)
-}
+    setTimeout(loop, timeout)
+})();
 
 function printGame(inputgame) {
 	let out = "";
@@ -69,13 +63,13 @@ for (let y = 0; y < HEIGHT; y++) {
 function drawSquare(x, y, selected = false) {
 	ctx.fillStyle = selected ? "#4C4C4C" : "#B2B2B2";
 	ctx.strokeStyle = selected ? "#4C4C4C" : "#666666";
-	ctx.lineWidth = 4;
+	ctx.lineWidth = BUTTON_SIZE / 5;
 	ctx.beginPath();
 	ctx.rect(
 		x * BUTTON_SIZE,
 		y * BUTTON_SIZE,
-		BUTTON_SIZE - 5,
-		BUTTON_SIZE - 5
+		BUTTON_SIZE - (BUTTON_SIZE / 3),
+		BUTTON_SIZE - (BUTTON_SIZE / 3)
 	);
 	ctx.fill();
 	ctx.stroke();
