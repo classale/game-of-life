@@ -57,13 +57,17 @@ label, button {
     align-items: center;
 }
 
-.options button {
+button {
     background-color: #D9D9D9;
-    font-size: 48px;
     border: none;
-    border-radius: 12px;
-    padding: 16px 64px 16px 64px;
     cursor: pointer;
+    border-radius: 4px;    
+}
+    
+.options button {
+    font-size: 48px;
+    padding: 16px 64px 16px 64px;
+    border-radius: 12px;
 }
 
 input[type=range] {
@@ -120,4 +124,64 @@ input[type=range]::-ms-thumb {
     background: #4C4C4C;
     cursor: pointer;
     border: none;
+}
+
+.rulescontainer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000080;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+.rulescontainer .rules {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px #000;
+}
+
+.rulescontainer .rules .rulesList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rulesList div {
+    display: flex;
+    gap: 4px;
+}
+
+.rulesList input, select {
+    border-radius: 0;
+    border: 1px solid black;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.actions button {
+    font-size: 32px;
+    padding: 8px;
+    border-radius: 12px;
 }
